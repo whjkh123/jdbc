@@ -30,15 +30,15 @@ public class BookSelectAll {
 			 * a.author_id
 			 */
 			String query = "";
-			query += "select book_id, ";
-			query += "title, ";
-			query += "pubs,";
-			query += "pub_date,";
-			query += "a.author_id,";
-			query += "author_name,";
-			query += "author_desc ";
-			query += "from book b, author a ";
-			query += "where b.author_id = a.author_id";
+			query += " select book_id, ";
+			query += " title, ";
+			query += " pubs,";
+			query += " pub_date,";
+			query += " a.author_id,";
+			query += " author_name,";
+			query += " author_desc ";
+			query += " from book b, author a ";
+			query += " where b.author_id = a.author_id ";
 
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
@@ -53,7 +53,7 @@ public class BookSelectAll {
 				String aName = rs.getString("author_name");// String aName = rs.getInt(author_name);
 				String aDesc = rs.getString("author_desc");// String aDesc = rs.getInt(author_desc);
 
-				System.out.println(bId + ", " + bTitle + ", " + bPubs + ", " + bPubD + ", " + aId + ", " + aName + ", " + aDesc);
+				System.out.println(bId + ". " + bTitle + ", " + bPubs + ", " + bPubD + ", " + aId + ", " + aName + ", " + aDesc);
 			}
 
 		} catch (ClassNotFoundException e) {
