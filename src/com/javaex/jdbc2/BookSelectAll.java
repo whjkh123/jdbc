@@ -28,7 +28,7 @@ public class BookSelectAll {
 			 * SELECT b.book_id,
 			 *        b.title 제목,
 			 *        b.pubs 출판사,
-			 *        b.pub_date 출판일,
+			 *        TO_CHAR(b.pub_date, 'yyyy-mm-dd') 출판일,
 			 *        a.author_id,
 			 *        a.author_name 지은이,
 			 *        a.author_desc 기타
@@ -36,13 +36,13 @@ public class BookSelectAll {
 			 * WHERE b.author_id = a.author_id
 			 */
 			String query = "";
-			query += " select book_id, ";
-			query += " title, ";
-			query += " pubs,";
-			query += " pub_date,";
-			query += " a.author_id,";
-			query += " author_name,";
-			query += " author_desc ";
+			query += " select b.book_id, ";
+			query += " b.title, ";
+			query += " b.pubs, ";
+			query += " TO_CHAR(b.pub_date, 'yyyy-mm-dd') pub_date, ";// TO_CHAR(b.pub_date, 'yyyy-mm-dd') as pub_date; 
+			query += " a.author_id, ";
+			query += " a.author_name, ";
+			query += " a.author_desc ";
 			query += " from book b, author a ";
 			query += " where b.author_id = a.author_id ";
 
