@@ -10,7 +10,13 @@ import java.util.List;
 
 public class AuthorDao {
 
-	public int authorInsert(String authorName, String authorDesc) {
+	private String driver = "oracle.jdbc.driver.OracleDriver";
+	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	private String id = "webdb";
+	private String pw = "webdb";
+
+	// INSERT
+	public int authorInsert(AuthorVo aVo) {
 
 		// 0. import java.sql.*;
 		Connection conn = null;
@@ -21,18 +27,17 @@ public class AuthorDao {
 
 		try {
 			// 1. JDBC 드라이버 (Oracle) 로딩
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName(driver);
 
 			// 2. Connection 얻어오기
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			conn = DriverManager.getConnection(url, "webdb", "webdb");
+			conn = DriverManager.getConnection(url, id, pw);
 
 			// 3. SQL문 준비 / 바인딩 / 실행
 			// INSERT INTO author VALUES(SEQ_AUTHOR_ID.nextval, '조경환', '서울시 강서구');
 			String query = "INSERT INTO author VALUES(SEQ_AUTHOR_ID.nextval, ?, ?)";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, authorName);
-			pstmt.setString(2, authorDesc);
+			pstmt.setString(1, aVo.getAuthorName());
+			pstmt.setString(2, aVo.getAuthorDesc());
 
 			count = pstmt.executeUpdate(); // insert
 
@@ -68,6 +73,7 @@ public class AuthorDao {
 
 	}
 
+	// DELETE
 	public int authorDelete(int authorId) {
 
 		// 0. import java.sql.*;
@@ -79,11 +85,10 @@ public class AuthorDao {
 
 		try {
 			// 1. JDBC 드라이버 (Oracle) 로딩
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName(driver);
 
 			// 2. Connection 얻어오기
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			conn = DriverManager.getConnection(url, "webdb", "webdb");
+			conn = DriverManager.getConnection(url, id, pw);
 
 			// 3. SQL문 준비 / 바인딩 / 실행
 			// DELETE FROM author WHERE author_id = 7;
@@ -125,7 +130,8 @@ public class AuthorDao {
 
 	}
 
-	public int authorUpdate(int authorId, String authorName, String authorDesc) {
+	// UPDATE
+	public int authorUpdate(AuthorVo aVo) {
 
 		// 0. import java.sql.*;
 		Connection conn = null;
@@ -136,11 +142,10 @@ public class AuthorDao {
 
 		try {
 			// 1. JDBC 드라이버 (Oracle) 로딩
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName(driver);
 
 			// 2. Connection 얻어오기
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			conn = DriverManager.getConnection(url, "webdb", "webdb");
+			conn = DriverManager.getConnection(url, id, pw);
 
 			// 3. SQL문 준비 / 바인딩 / 실행
 
@@ -148,13 +153,12 @@ public class AuthorDao {
 			// 2;
 			String query = "";
 			query += " update author ";
-			query += " SET author_name = ?, ";
 			query += " author_desc = ? ";
 			query += " WHERE author_id = ? ";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, authorName);
-			pstmt.setString(2, authorDesc);
-			pstmt.setInt(3, authorId);
+			pstmt.setString(1, aVo.getAuthorName());
+			pstmt.setString(2, aVo.getAuthorDesc());
+			pstmt.setInt(3, aVo.getAuthorId());
 
 			count = pstmt.executeUpdate(); // update
 
@@ -190,6 +194,7 @@ public class AuthorDao {
 
 	}
 
+	// LIST(SELECT)
 	public List<AuthorVo> getAuthorList() {
 
 		List<AuthorVo> aList = new ArrayList<AuthorVo>();
@@ -201,11 +206,10 @@ public class AuthorDao {
 
 		try {
 			// 1. JDBC 드라이버 (Oracle) 로딩
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName(driver);
 
 			// 2. Connection 얻어오기
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			conn = DriverManager.getConnection(url, "webdb", "webdb");
+			conn = DriverManager.getConnection(url, id, pw);
 
 			// 3. SQL문 준비 / 바인딩 / 실행
 			/*
