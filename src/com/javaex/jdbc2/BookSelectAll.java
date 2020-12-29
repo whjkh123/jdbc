@@ -25,9 +25,15 @@ public class BookSelectAll {
 
 			// 3. SQL문 준비 / 바인딩 / 실행
 			/*
-			 * SELECT b.book_id, b.title 제목, b.pubs 출판사, b.pub_date 출판일, a.author_id,
-			 * a.author_name 지은이, a.author_desc 기타 FROM book b, author a WHERE b.author_id =
-			 * a.author_id
+			 * SELECT b.book_id,
+			 *        b.title 제목,
+			 *        b.pubs 출판사,
+			 *        b.pub_date 출판일,
+			 *        a.author_id,
+			 *        a.author_name 지은이,
+			 *        a.author_desc 기타
+			 * FROM book b, author a
+			 * WHERE b.author_id = a.author_id
 			 */
 			String query = "";
 			query += " select book_id, ";
