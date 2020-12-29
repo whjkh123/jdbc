@@ -125,7 +125,7 @@ public class AuthorDao {
 
 	}
 
-	public int authorUpdate(int authorId, String Name, String Desc) {
+	public int authorUpdate(int authorId, String authorName, String authorDesc) {
 
 		// 0. import java.sql.*;
 		Connection conn = null;
@@ -144,15 +144,16 @@ public class AuthorDao {
 
 			// 3. SQL문 준비 / 바인딩 / 실행
 
-			// UPDATE author SET author_name = '김경리' author_desc = '제주광역시' WHERE author_id = 2;
+			// UPDATE author SET author_name = '김경리' author_desc = '제주광역시' WHERE author_id =
+			// 2;
 			String query = "";
 			query += " update author ";
 			query += " SET author_name = ?, ";
 			query += " author_desc = ? ";
 			query += " WHERE author_id = ? ";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, Name);
-			pstmt.setString(2, Desc);
+			pstmt.setString(1, authorName);
+			pstmt.setString(2, authorDesc);
 			pstmt.setInt(3, authorId);
 
 			count = pstmt.executeUpdate(); // update

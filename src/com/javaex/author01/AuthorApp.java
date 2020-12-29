@@ -38,6 +38,8 @@ public class AuthorApp {
 
 		aDao.authorUpdate(2, "김경리", "제주광역시");
 
+		aList = aDao.getAuthorList();
+
 		for (int i = 0; i < aList.size(); i++) {
 
 			AuthorVo vo = aList.get(i);
