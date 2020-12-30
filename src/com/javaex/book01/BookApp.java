@@ -70,7 +70,7 @@ public class BookApp {
 
 			BookVo info = bList.get(i);
 			System.out.println(info.book_id + ", " + info.title + ", " + info.pubs + ", " + info.pub_date + ", "
-					+ info.author_id + ", " + info.authorName + ", " + info.authorDesc);
+					+ info.author_id + ", " + info.author_name + ", " + info.author_desc);
 		}
 
 	}

@@ -7,8 +7,8 @@ public class BookVo {
 	public String pubs;
 	public String pub_date;
 	public int author_id;
-	public String authorName;
-	public String authorDesc;
+	public String author_name;
+	public String author_desc;
 
 	public BookVo(int book_id, String title) {
 		super();
@@ -33,15 +33,15 @@ public class BookVo {
 		this.author_id = author_id;
 	}
 
-	public BookVo(int book_id, String title, String pubs, String pub_date, int author_id, String authorName, String authorDesc) {
+	public BookVo(int book_id, String title, String pubs, String pub_date, int author_id, String author_name, String author_desc) {
 		super();
 		this.book_id = book_id;
 		this.title = title;
 		this.pubs = pubs;
 		this.pub_date = pub_date;
 		this.author_id = author_id;
-		this.authorName = authorName;
-		this.authorDesc = authorDesc;
+		this.author_name = author_name;
+		this.author_desc = author_desc;
 	}
 
 	public int getBook_id() {
