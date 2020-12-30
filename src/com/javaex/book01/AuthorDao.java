@@ -59,7 +59,7 @@ public class AuthorDao {
 
 		try {
 			// 3. SQL문 준비 / 바인딩 / 실행
-			// INSERT INTO author VALUES(SEQ_AUTHOR_ID.nextval, '조경환', '서울시 강서구');
+			// INSERT INTO author VALUES(SEQ_AUTHOR_ID.nextval, author_name, author_desc);
 			String query = "INSERT INTO author VALUES(SEQ_AUTHOR_ID.nextval, ?, ?)";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, aVo.getAuthorName());
@@ -157,9 +157,6 @@ public class AuthorDao {
 
 		try {
 			// 3. SQL문 준비 / 바인딩 / 실행
-			/*
-			 * SELECT author_id, author_name, author_desc FROM author;
-			 */
 			String query = "";
 			query += " select author_id, author_name, author_desc ";
 			query += " from author ";
