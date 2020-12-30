@@ -144,8 +144,7 @@ public class BookDao {
 			query += " select 	b.book_id, ";
 			query += " 			b.title, ";
 			query += " 			b.pubs, ";
-			query += " 			TO_CHAR(b.pub_date, 'yyyy-mm-dd') pub_date, ";// TO_CHAR(b.pub_date, 'yyyy-mm-dd') as
-																				// pub_date;
+			query += " 			TO_CHAR(b.pub_date, 'yyyy-mm-dd') pub_date, ";// TO_CHAR(b.pub_date, 'yyyy-mm-dd') as pub_date;
 			query += " 			a.author_id, ";
 			query += " 			a.author_name, ";
 			query += " 			a.author_desc ";
