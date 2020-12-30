@@ -1,12 +1,14 @@
 package com.javaex.book01;
 
-public class BookVo extends AuthorVo {
+public class BookVo {
 
 	public int book_id;
 	public String title;
 	public String pubs;
 	public String pub_date;
 	public int author_id;
+	public String authorName;
+	public String authorDesc;
 
 	public BookVo(int book_id, String title) {
 		super();
