@@ -1,14 +1,12 @@
 package com.javaex.book01;
 
-public class BookVo {
+public class BookVo extends AuthorVo {
 
 	public int book_id;
 	public String title;
 	public String pubs;
 	public String pub_date;
 	public int author_id;
-	public String authorName;
-	public String authorDesc;
 
 	public BookVo(int book_id, String title) {
 		super();
@@ -33,8 +31,7 @@ public class BookVo {
 		this.author_id = author_id;
 	}
 
-	public BookVo(int book_id, String title, String pubs, String pub_date, int author_id, String authorName,
-			String authorDesc) {
+	public BookVo(int book_id, String title, String pubs, String pub_date, int author_id, String authorName, String authorDesc) {
 		super();
 		this.book_id = book_id;
 		this.title = title;
